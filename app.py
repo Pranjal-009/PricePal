@@ -10,9 +10,9 @@ app.secret_key = 'your_secret_key'  # CHANGE THIS in production
 def connect_to_db():
     return mysql.connector.connect(
         host="localhost",
-        user="root",
-        password="Pranjal@09",
-        database="pricepal"
+        user="your-username",
+        password="your-password",
+        database="your-database-name"
     )
 
 # --- Product Fetch Helper ---

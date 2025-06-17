@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+
+  <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+
+  <title>PricePal</title>
+    <link rel="icon" href="static/assets/images/logo.png" type="image/x-icon">
+
+  <!-- Bootstrap core CSS  -->
+  <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+  <!-- FontAwesome & Template CSS-->
+  <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/fontawesome.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/templatemo-sixteen.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/owl.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/styles.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/products.css') }}" >
+
+</head>
+
+<body>
+
+  <!-- Preloader Start -->
+  <div id="preloader">
+    <div class="jumper">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <!-- Preloader End -->
+
+  <!-- Header Start -->
+  <header class="">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="{{ url_for('home') }}"><h2>Price<em>Pal</em></h2></a>
+
+
+        <!-- Search Bar Start -->
+  <form method="GET" action="{{ url_for('search') }}" class="form-inline mx-auto d-none d-lg-block" style="width: 40%;">
+    <div class="input-group">
+      <input class="form-control" type="search" placeholder="Search products..." name="query" aria-label="Search" required>
+      <div class="input-group-append">
+        <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
+      </div>
+    </div>
+  </form>
+  <!-- Search Bar End -->
+   
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="{{ url_for('home') }}">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('products') }}">Our Products</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('about') }}">About Us</a>
+            </li>
+          
+            {% if 'user_id' in session %}
+              <!-- If logged in, show Logout -->
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+              </li>
+            {% else %}
+              <!-- If not logged in, show Login -->
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+              </li>
+            {% endif %}
+          </ul>
+          
+        </div>
+      </div>
+    </nav>
+  </header>
+  <!-- Header End -->
+
+  <!-- Banner Start -->
+  <div class="banner header-text">
+    <div class="owl-banner owl-carousel">
+      <div class="banner-item-01">
+        <div class="text-content">
+          <h4>Price-Pal</h4>
+          <h2>Your Ultimate</h2>
+          <h2>Price Comparison Buddy</h2>
+        </div>
+      </div>
+      <div class="banner-item-02">
+        <div class="text-content">
+          <h4>Flash Deals</h4>
+          <h2>Get your best products</h2>
+        </div>
+      </div>
+      <div class="banner-item-03">
+        <div class="text-content">
+          <h4>Compare Price easily</h4>
+          <h2>Grab last minute deals</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Banner End -->
+<!-- Logo Section for Amazon, Flipkart, Myntra -->
+<div class="platform-logos" style="text-align: center; margin-top: 30px;">
+  <!-- Amazon Logo and Name -->
+  <a href="https://www.amazon.in" target="_blank" style="margin: 0 50px; text-align: center; display: inline-block; text-decoration: none; color: #333;">
+      <img src="{{ url_for('static', filename='assets/images/amazon_logo.png') }}" alt="Amazon" style="height: 40px;">
+      <p style="margin-top: 8px; font-weight: 600;">Amazon</p>
+  </a>
+
+  <!-- Flipkart Logo and Name -->
+  <a href="https://www.flipkart.com" target="_blank" style="margin: 0 50px; text-align: center; display: inline-block; text-decoration: none; color: #333;">
+      <img src="{{ url_for('static', filename='assets/images/flipkart_logo.png') }}" alt="Flipkart" style="height: 40px;">
+      <p style="margin-top: 8px; font-weight: 600;">Flipkart</p>
+  </a>
+
+  <!-- Myntra Logo and Name -->
+  <a href="https://www.myntra.com" target="_blank" style="margin: 0 50px; text-align: center; display: inline-block; text-decoration: none; color: #333;">
+      <img src="{{ url_for('static', filename='assets/images/myntra_logo.png') }}" alt="Myntra" style="height: 40px;">
+      <p style="margin-top: 8px; font-weight: 600;">Myntra</p>
+  </a>
+</div>
+
+  <!-- Latest Products Start -->
+<div class="latest-products">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="section-heading">
+          <h2>Latest Products</h2>
+          <a href="{{ url_for('products') }}">view all products <i class="fa fa-angle-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Loop through latest products and display them -->
+      <div class="product-container">
+        {% for item in latest_products %}
+        <div class="product-card">
+            <img src="{{ item.image_url }}" alt="{{ item.product_title }}">
+            <h3>{{ item.product_title }}</h3>
+
+        <!-- Amazon Price Row -->
+        {% if item.amazon_price %}
+        <div class="platform-price">
+                <img src="{{ url_for('static', filename='assets/images/amazon_logo.png') }}" alt="Amazon" style="height:20px; margin-right:10px;">
+                <span style="flex-grow: 1;">Amazon Price: ₹{{item.amazon_price }}</span>
+                <a href="{{item.amazon_url }}" target="_blank" class="buy-button">Buy Now</a>
+            </p>
+        </div>
+        {% endif %}
+
+        <!-- Flipkart Price Row -->
+        {% if item.flipkart_price %}
+        <div class="platform-price">
+                <img src="{{ url_for('static', filename='assets/images/flipkart_logo.png') }}" alt="Flipkart" style="height:20px; margin-right:10px;">
+                <span style="flex-grow: 1;">Flipkart Price: ₹{{ item.flipkart_price }}</span>
+                <a href="{{item.flipkart_url }}" target="_blank" class="buy-button">Buy Now</a>
+            </p>
+        </div>
+        {% endif %}
+
+        <!-- Myntra Price Row -->
+        {% if item.myntra_price %}
+        <div class="platform-price">
+                <img src="{{ url_for('static', filename='assets/images/myntra_logo.png') }}" alt="Myntra" style="height:20px; margin-right:10px;">
+                <span style="flex-grow: 1;">Myntra Price: ₹{{ item.myntra_price }}</span>
+                <a href="{{ item.myntra_url }}" target="_blank" class="buy-button">Buy Now</a>
+            </p>
+        </div>
+        {% endif %}
+        
+            <p class="price">
+                Best Price: ₹{{item.best_price }} on {{item.website}}
+            </p>
+
+            <button class="compare-button" onclick="toggleCompare(this)">Compare Prices</button>
+        </div>
+        {% endfor %}
+      </div>  
+    </div>
+<!-- Latest Products End -->
+
+  <!-- Best Features Start -->
+  <div class="best-features">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="section-heading">
+            <h2>About PricePal</h2>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="left-content">
+            <h4>Looking for the best Price?</h4>
+            <p><b>PricePal</b> revolutionizes the online shopping experience by providing a comprehensive, real-time price comparison platform. Our intelligent system aggregates pricing data from multiple e-commerce sources, presenting users with a clear, concise overview of available options.</p>
+            <ul class="featured-list">
+              <li>Compare Prices Across Platforms</li>
+              <li>Quick Product Search</li>
+              <li>Best Price Highlighted</li>
+            </ul>
+            <a href="{{ url_for('about') }}" class="filled-button">Read More</a>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="right-image">
+            <img src="{{ url_for('static', filename='assets/images/feature-image.jpg') }}" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Best Features End -->
+
+  <!-- Footer Start -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="inner-content">
+            <p>Copyright &copy; 2025 PricePal Co., Ltd.
+              - Design: <a rel="nofollow noopener" href="https://templatemo.com" target="_blank">Pranjal, Pranjal, Pranjali</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Footer End -->
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+  <!-- Additional Scripts -->
+  <script src="{{ url_for('static', filename='assets/js/custom.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/js/owl.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/js/slick.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/js/isotope.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/js/accordions.js') }}"></script>
+
+  <!-- Inline Script -->
+  <script language="text/Javascript">
+    cleared = [0, 0, 0];
+    function clearField(t){
+      if (!cleared[t.id]){
+        cleared[t.id] = 1;
+        t.value = '';
+        t.style.color = '#fff';
+      }
+    }
+  </script>
+
+<script src="{{ url_for('static', filename='assets/js/products.js') }}"></script>
+</body>
+</html>

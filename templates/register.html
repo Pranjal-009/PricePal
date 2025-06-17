@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - PricePal</title>
+    <link rel="icon" href="static/assets/images/logo.png" type="image/x-icon">
+
+    <!-- Link to your stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/styles.css') }}">
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+    body {
+        background: #2b8fdb;
+    }
+</style>
+
+</head>
+<body>
+
+    <div class="wrapper">
+
+        <div class="logo">
+            <img src="{{ url_for('static', filename='assets/images/logo.png') }}" alt="PricePal Logo">
+        </div>
+
+        <div class="name">
+            Create Account
+        </div>
+
+        <form action="{{ url_for('register') }}" method="POST">
+
+            <!-- Username Field -->
+            <div class="form-field d-flex align-items-center">
+                <span class="fas fa-user"></span>
+                <input type="text" name="username" id="username" placeholder="Username" required>
+            </div>
+
+            <!-- Email Field -->
+            <div class="form-field d-flex align-items-center">
+                <span class="far fa-envelope"></span>
+                <input type="email" name="email" id="email" placeholder="Email" required>
+            </div>
+
+            <!-- Password Field -->
+            <div class="form-field d-flex align-items-center">
+                <span class="fas fa-key"></span>
+                <input type="password" name="password" id="password" placeholder="Password" required>
+            </div>
+
+            <!-- Confirm Password Field -->
+            <div class="form-field d-flex align-items-center">
+                <span class="fas fa-key"></span>
+                <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password" required>
+            </div>
+
+            <!-- Register Button -->
+            <button class="btn mt-3" type="submit">Register</button>
+
+        </form>
+
+        <div class="text-center fs-6 mt-5">
+            Already have an account? <a href="{{ url_for('login') }}">Login</a>
+        </div>
+
+    </div>
+
+</body>
+</html>

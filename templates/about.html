@@ -1,0 +1,231 @@
+<!DOCTYPE html> 
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+
+    <title>Pricepal-About Page</title>
+    <link rel="icon" href="static/assets/images/logo.png" type="image/x-icon">
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/fontawesome.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/templatemo-sixteen.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/owl.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/styles.css') }}">
+  </head>
+
+  <body>
+
+    <!-- ***** Preloader Start ***** -->
+    <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>  
+    <!-- ***** Preloader End ***** -->
+
+    <!-- Header -->
+    <header class="">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <a class="navbar-brand" href="{{ url_for('home') }}"><h2>Price<em>Pal</em></h2></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('home') }}">Home
+                </a>
+              </li> 
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('products') }}">Our Products</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="{{ url_for('about') }}">About Us
+                  <span class="sr-only">(current)</span>
+                </a>
+              </li>
+             
+            {% if 'user_id' in session %}
+            <!-- If logged in, show Logout -->
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+            </li>
+          {% else %}
+            <!-- If not logged in, show Login -->
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+            </li>
+          {% endif %}
+        </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Page Content -->
+    <div class="page-heading about-heading header-text">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="text-content">
+              <h4>about us</h4>
+              <h2>PricePal-Compare price like a Pro</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="best-features about-features">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-heading">
+              <h2>Our Background</h2>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="right-image">
+              <img src="{{ url_for('static', filename='assets/images/feature-image.jpg') }}" alt="">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="left-content">
+              <h4>What is PricePal? &amp; What does it do?</h4>
+              <p>PricePal is a web-based price comparison application designed to simplify online shopping by aggregating product prices across multiple e-commerce platforms. The system empowers users to make informed purchasing decisions by presenting real-time pricing data and product availability from various online retailers in one unified interface. Developed using HTML, CSS, and JavaScript for the frontend, the backend is powered by Python with Flask, while MySQL is used for efficient data storage and retrieval.<br><br> Web scraping techniques are employed to dynamically fetch and update product data from different sources. PricePal enhances the user experience by offering features such as keyword-based search, product filtering, and price trend visualization. The application aims to provide transparency in online pricing and optimize the shopping experience by helping users find the best deals available across the web.</p>
+              <ul class="social-icons">
+                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="team-members">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-heading">
+              <h2>Our Team Members</h2>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="team-member">
+              <div class="thumb-container">
+                <img src="{{ url_for('static', filename='assets/images/team_01.jpg') }}" alt="">
+                <div class="hover-effect">
+                  <div class="hover-content">
+                    <ul class="social-icons">
+                      <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                      <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                      <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="down-content">
+                <h4>Pranjali Sharma</h4>
+                <span>Front End</span>
+               
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="team-member">
+              <div class="thumb-container">
+                <img src="{{ url_for('static', filename='assets/images/team_01.jpg') }}" alt="">
+                <div class="hover-effect">
+                  <div class="hover-content">
+                    <ul class="social-icons">
+                      <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                      <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                      <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="down-content">
+                <h4>Pranjal Dhanotiya</h4>
+                <span>Frontend and Backend</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="team-member">
+              <div class="thumb-container">
+                <img src="{{ url_for('static', filename='assets/images/team_01.jpg') }}" alt="">
+                <div class="hover-effect">
+                  <div class="hover-content">
+                    <ul class="social-icons">
+                      <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                      <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                      <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="down-content">
+                <h4>Pranjal Sharma</h4>
+                <span>Backend</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="inner-content">
+              <p>Copyright &copy; 2025 PricePal Co., Ltd.
+              - Design: <a rel="nofollow noopener" href="https://templatemo.com" target="_blank">Pranjal, Pranjal, Pranjali</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+    <!-- Additional Scripts -->
+    <script src="{{ url_for('static', filename='assets/js/custom.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/owl.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/slick.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/isotope.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/accordions.js') }}"></script>
+
+    <script language="text/Javascript"> 
+      cleared[0] = cleared[1] = cleared[2] = 0;
+      function clearField(t){
+        if(!cleared[t.id]){
+          cleared[t.id] = 1;
+          t.value='';
+          t.style.color='#fff';
+        }
+      }
+    </script>
+
+  </body>
+
+</html>

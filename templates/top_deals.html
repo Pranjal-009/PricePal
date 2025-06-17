@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="{{ url_for('static', filename='assets/css/products.css') }}" rel="stylesheet">
+
+    <title>Top Deals - PricePal</title>
+    <link rel="icon" href="{{ url_for('static', filename='assets/images/logo.png') }}" type="image/x-icon">
+</head>
+<body>
+
+<!-- Main Content -->
+{% include 'header.html' %}
+<br><br><br><br>
+
+<h1 class="text-center">Top Deals</h1>
+<hr>
+
+<div class="product-container">
+    {% for product in top_deals_products %}
+    <div class="product-card">
+        <img src="{{ product.image_url }}" alt="{{ product.product_title }}">
+        <h3>{{ product.product_title }}</h3>
+
+      <!-- Amazon Price Row -->
+      {% if product.amazon_price %}
+      <div class="platform-price">
+              <img src="{{ url_for('static', filename='assets/images/amazon_logo.png') }}" alt="Amazon" style="height:20px; margin-right:10px;">
+              <span style="flex-grow: 1;">Amazon Price: ₹{{ product.amazon_price }}</span>
+              <a href="{{ product.amazon_url }}" target="_blank" class="buy-button">Buy Now</a>
+          </p>
+      </div>
+      {% endif %}
+
+      <!-- Flipkart Price Row -->
+      {% if product.flipkart_price %}
+      <div class="platform-price">
+              <img src="{{ url_for('static', filename='assets/images/flipkart_logo.png') }}" alt="Flipkart" style="height:20px; margin-right:10px;">
+              <span style="flex-grow: 1;">Flipkart Price: ₹{{ product.flipkart_price }}</span>
+              <a href="{{ product.flipkart_url }}" target="_blank" class="buy-button">Buy Now</a>
+          </p>
+      </div>
+      {% endif %}
+
+      <!-- Myntra Price Row -->
+      {% if product.myntra_price %}
+      <div class="platform-price">
+              <img src="{{ url_for('static', filename='assets/images/myntra_logo.png') }}" alt="Myntra" style="height:20px; margin-right:10px;">
+              <span style="flex-grow: 1;">Myntra Price: ₹{{ product.myntra_price }}</span>
+              <a href="{{ product.myntra_url }}" target="_blank" class="buy-button">Buy Now</a>
+          </p>
+      </div>
+      {% endif %}
+
+        <p class="price">
+            Best Price: ₹{{ product.best_price }} on {{product.website}}
+        </p>
+
+        <button class="compare-button" onclick="toggleCompare(this)">Compare Prices</button>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- Custom JS -->
+<script src="{{ url_for('static', filename='assets/js/products.js') }}"></script>
+
+</body>
+</html>

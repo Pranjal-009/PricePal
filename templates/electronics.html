@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="{{ url_for('static', filename='assets/css/products.css') }}" rel="stylesheet">
+
+    <title>PricePal - Electronics</title>
+    <link rel="icon" href="{{ url_for('static', filename='assets/images/logo.png') }}" type="image/x-icon">
+</head>
+<body>
+
+  {% include 'header.html' %}
+<br><br><br><br>
+
+<h1> Mobiles </h1>
+<hr>
+<div class="product-container">
+  {% for mobile in mobiles %}
+  <div class="product-card">
+      <img src="{{ mobile.image_url }}" alt="{{ mobile.product_title }}">
+      <h3>{{ mobile.product_title }}</h3>
+
+      <!-- Amazon Price Row: Logo, Price, and Button in one line -->
+      <div class="platform-price">
+              <img src="{{ url_for('static', filename='assets/images/amazon_logo.png') }}" alt="Amazon" style="height:20px; margin-right:10px;">
+              <span style="flex-grow: 1;">Amazon Price: ₹{{ mobile.amazon_price }}</span>
+              <a href="{{ mobile.amazon_url }}" target="_blank" class="buy-button">Buy Now</a>
+          </p>
+      </div>
+
+      <!-- Flipkart Price Row: Logo, Price, and Button in one line -->
+      <div class="platform-price">
+              <img src="{{ url_for('static', filename='assets/images/flipkart_logo.png') }}" alt="Flipkart" style="height:20px; margin-right:10px;">
+              <span style="flex-grow: 1;">Flipkart Price: ₹{{ mobile.flipkart_price }}</span>
+              <a href="{{ mobile.flipkart_url }}" target="_blank" class="buy-button">Buy Now</a>
+          </p>
+      </div>
+
+      <!-- Myntra Price Row: Logo, Price, and Button in one line -->
+      <div class="platform-price">
+              <img src="{{ url_for('static', filename='assets/images/myntra_logo.png') }}" alt="Myntra" style="height:20px; margin-right:10px;">
+              <span style="flex-grow: 1;">Myntra Price:{{ mobile.myntra_price }}</span>
+          </p>
+      </div>
+
+      <p class="price">
+          Best Price: ₹{{ mobile.best_price }} on {{mobile.website}}
+      </p>
+
+      <button class="compare-button" onclick="toggleCompare(this)">Compare Prices</button>
+  </div>
+  {% endfor %}
+</div>
+<br>
+
+<hr>
+<h1>Smartwatches</h1>
+<hr>
+
+<div class="product-container">
+  {% for smartwatch in smartwatches %}
+  <div class="product-card">
+      <img src="{{ smartwatch.image_url }}" alt="{{ smartwatch.product_title }}">
+      <h3>{{ smartwatch.product_title }}</h3>
+
+      <!-- Amazon Price Row: Logo, Price, and Button in one line -->
+      <div class="platform-price">
+              <img src="{{ url_for('static', filename='assets/images/amazon_logo.png') }}" alt="Amazon" style="height:20px; margin-right:10px;">
+              <span style="flex-grow: 1;">Amazon Price: ₹{{ smartwatch.amazon_price }}</span>
+              <a href="{{ smartwatch.amazon_url }}" target="_blank" class="buy-button">Buy Now</a>
+          </p>
+      </div>
+
+      <!-- Flipkart Price Row: Logo, Price, and Button in one line -->
+      <div class="platform-price">
+              <img src="{{ url_for('static', filename='assets/images/flipkart_logo.png') }}" alt="Flipkart" style="height:20px; margin-right:10px;">
+              <span style="flex-grow: 1;">Flipkart Price: ₹{{ smartwatch.flipkart_price }}</span>
+              <a href="{{ smartwatch.flipkart_url }}" target="_blank" class="buy-button">Buy Now</a>
+          </p>
+      </div>
+
+      <!-- Myntra Price Row: Logo, Price, and Button in one line -->
+      <div class="platform-price">
+              <img src="{{ url_for('static', filename='assets/images/myntra_logo.png') }}" alt="Myntra" style="height:20px; margin-right:10px;">
+              <span style="flex-grow: 1;">Myntra Price: {{ smartwatch.myntra_price }}</span>
+          </p>
+      </div>
+
+      <p class="price">
+          Best Price: ₹{{ smartwatch.best_price }} on {{smartwatch.website}}
+      </p>
+
+      <button class="compare-button" onclick="toggleCompare(this)">Compare Prices</button>
+  </div>
+  {% endfor %}
+</div>
+
+    <script src="{{ url_for('static', filename='assets/js/products.js') }}"></script>
+    
+</body>
+</html>

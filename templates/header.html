@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+
+  <title>PricePal</title>
+    <link rel="icon" href="static/assets/images/logo.png" type="image/x-icon">
+
+  <!-- Bootstrap core CSS -->
+  <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+  <!-- FontAwesome & Template CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/fontawesome.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/templatemo-sixteen.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/owl.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/styles.css') }}">
+  
+</head>
+
+<body>
+
+   <!-- Header Start -->
+<header class="">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+    
+        <a class="navbar-brand" href="{{ url_for('products') }}"><h2>Price<em>Pal</em></h2></a>
+
+
+        <!-- Search Bar Start
+  <form method="GET" action="{{ url_for('search') }}" class="form-inline mx-auto d-none d-lg-block" style="width: 40%;">
+    <div class="input-group">
+      <input class="form-control" type="search" placeholder="Search products..." name="query" aria-label="Search" required>
+      <div class="input-group-append">
+        <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
+      </div>
+    </div>
+  </form>
+   Search Bar End -->
+   
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item ">
+              <a class="nav-link" href="{{ url_for('home') }}">Home <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="{{ url_for('products') }}">Our Products <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('about') }}">Aboutt Us</a>
+            </li>
+          
+            {% if 'user_id' in session %}
+              <!-- If logged in, show Logout -->
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+              </li>
+            {% else %}
+              <!-- If not logged in, show Login -->
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+              </li>
+            {% endif %}
+          </ul>
+          
+        </div>
+      </div>
+    </nav>
+  </header>

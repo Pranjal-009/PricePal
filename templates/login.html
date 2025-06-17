@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - PricePal</title>
+    <link rel="icon" href="{{ url_for('static', filename='assets/images/logo.png') }}" type="image/x-icon">
+
+    <!-- Link to your stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/styles.css') }}">
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+<style>
+    body {
+        background: #2b8fdb;
+    }
+</style>
+
+</head>
+<body>
+
+    <div class="wrapper">
+
+        <div class="logo">
+            <img src="{{ url_for('static', filename='assets/images/logo.png') }}" alt="PricePal Logo">
+        </div>
+
+        <div class="name">
+           Welcome to PricePal
+        </div>
+
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for message in messages %}
+                        <p class="flash-error">{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <!-- Login Form -->
+        <form action="{{ url_for('login') }}" method="POST">
+
+            <div class="form-field d-flex align-items-center">
+                <span class="far fa-user"></span>
+                <input type="email" name="email" id="email" placeholder="Email" required>
+            </div>
+
+            <div class="form-field d-flex align-items-center">
+                <span class="fas fa-key"></span>
+                <input type="password" name="password" id="pwd" placeholder="Password" required>
+            </div>
+
+            <button class="btn mt-3" type="submit">Login</button>
+
+        </form>
+
+        <div class="text-center fs-6 mt-5">
+            Don't have an account?<a href="{{ url_for('register') }}">Register</a>
+        </div>
+
+    </div>
+
+</body>
+</html>

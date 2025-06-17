@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <link href="{{ url_for('static', filename='assets/css/products.css') }}" rel="stylesheet">
+
+    <title>PricePal - Skincare</title>
+    <link rel="icon" href="static/assets/images/logo.png" type="image/x-icon">
+    
+</head>
+<body>
+
+    {% include 'header.html' %}
+
+    <br><br><br><br>
+
+    <h1>Facewash</h1>
+
+    <hr>
+
+    <div class="product-container">
+        {% for facewash in facewash %}
+        <div class="product-card">
+            <img src="{{ facewash.image_url }}" alt="{{ facewash.product_title }}">
+            <h3>{{ facewash.product_title }}</h3>
+
+                   <!-- Amazon Price Row: Logo, Price, and Button in one line -->
+      <div class="platform-price">
+            <img src="{{ url_for('static', filename='assets/images/amazon_logo.png') }}" alt="Amazon" style="height:20px; margin-right:10px;">
+            <span style="flex-grow: 1;">Amazon Price: ₹{{ facewash.amazon_price }}</span>
+            <a href="{{ facewash.amazon_url }}" target="_blank" class="buy-button">Buy Now</a>
+        </p>
+    </div>
+
+    <!-- Flipkart Price Row: Logo, Price, and Button in one line -->
+    <div class="platform-price">
+            <img src="{{ url_for('static', filename='assets/images/flipkart_logo.png') }}" alt="Flipkart" style="height:20px; margin-right:10px;">
+            <span style="flex-grow: 1;">Flipkart Price: ₹{{ facewash.flipkart_price }}</span>
+            <a href="{{ facewash.flipkart_url }}" target="_blank" class="buy-button">Buy Now</a>
+        </p>
+    </div>
+
+    <!-- Myntra Price Row: Logo, Price, and Button in one line -->
+    <div class="platform-price">
+            <img src="{{ url_for('static', filename='assets/images/myntra_logo.png') }}" alt="Myntra" style="height:20px; margin-right:10px;">
+            <span style="flex-grow: 1;">Myntra Price: ₹{{ facewash.myntra_price }}</span>
+            <a href="{{ facewash.myntra_url }}" target="_blank" class="buy-button">Buy Now</a>
+        </p>
+    </div>
+
+
+            <p class="price">
+                Best Price: ₹{{facewash.best_price }} on {{facewash.website}}
+            </p>
+
+            <button class="compare-button" onclick="toggleCompare(this)">Compare Prices</button>
+        </div>
+        {% endfor %}
+    </div>
+
+    <hr>
+
+    <h1> Moisturizer </h1>
+
+    <hr>
+
+    <div class="product-container">
+        {% for moisturizer in moisturizer %}
+        <div class="product-card">
+            <img src="{{ moisturizer.image_url }}" alt="{{ moisturizer.product_title }}">
+            <h3>{{ moisturizer.product_title }}</h3>
+
+             <!-- Amazon Price Row: Logo, Price, and Button in one line -->
+      <div class="platform-price">
+            <img src="{{ url_for('static', filename='assets/images/amazon_logo.png') }}" alt="Amazon" style="height:20px; margin-right:10px;">
+            <span style="flex-grow: 1;">Amazon Price: ₹{{ moisturizer.amazon_price }}</span>
+            <a href="{{  moisturizer.amazon_url }}" target="_blank" class="buy-button">Buy Now</a>
+        </p>
+    </div>
+
+    <!-- Flipkart Price Row: Logo, Price, and Button in one line -->
+    <div class="platform-price">
+            <img src="{{ url_for('static', filename='assets/images/flipkart_logo.png') }}" alt="Flipkart" style="height:20px; margin-right:10px;">
+            <span style="flex-grow: 1;">Flipkart Price: ₹{{ moisturizer.flipkart_price }}</span>
+            <a href="{{ moisturizer.flipkart_url }}" target="_blank" class="buy-button">Buy Now</a>
+        </p>
+    </div>
+
+    <!-- Myntra Price Row: Logo, Price, and Button in one line -->
+    <div class="platform-price">
+            <img src="{{ url_for('static', filename='assets/images/myntra_logo.png') }}" alt="Myntra" style="height:20px; margin-right:10px;">
+            <span style="flex-grow: 1;">Myntra Price: ₹{{  moisturizer.myntra_price }}</span>
+            <a href="{{ moisturizer.myntra_url }}" target="_blank" class="buy-button">Buy Now</a>
+        </p>
+    </div>
+
+            <p class="price">
+                Best Price: ₹{{moisturizer.best_price }} on {{moisturizer.website}}
+            </p>
+
+            <button class="compare-button" onclick="toggleCompare(this)">Compare Prices</button>
+        </div>
+        {% endfor %}
+    </div>
+
+    <hr>
+
+    <h1> Sunscreen </h1>
+
+    <hr>
+
+    <div class="product-container">
+        {% for sunscreen in sunscreen %}
+        <div class="product-card">
+            <img src="{{ sunscreen.image_url }}" alt="{{ sunscreen.product_title }}">
+            <h3>{{ sunscreen.product_title }}</h3>
+
+             <!-- Amazon Price Row: Logo, Price, and Button in one line -->
+      <div class="platform-price">
+            <img src="{{ url_for('static', filename='assets/images/amazon_logo.png') }}" alt="Amazon" style="height:20px; margin-right:10px;">
+            <span style="flex-grow: 1;">Amazon Price: ₹{{sunscreen.amazon_price }}</span>
+            <a href="{{ sunscreen.amazon_url }}" target="_blank" class="buy-button">Buy Now</a>
+        </p>
+    </div>
+
+    <!-- Flipkart Price Row: Logo, Price, and Button in one line -->
+    <div class="platform-price">
+            <img src="{{ url_for('static', filename='assets/images/flipkart_logo.png') }}" alt="Flipkart" style="height:20px; margin-right:10px;">
+            <span style="flex-grow: 1;">Flipkart Price: ₹{{ sunscreen.flipkart_price }}</span>
+            <a href="{{sunscreen.flipkart_url }}" target="_blank" class="buy-button">Buy Now</a>
+        </p>
+    </div>
+
+    <!-- Myntra Price Row: Logo, Price, and Button in one line -->
+    <div class="platform-price">
+            <img src="{{ url_for('static', filename='assets/images/myntra_logo.png') }}" alt="Myntra" style="height:20px; margin-right:10px;">
+            <span style="flex-grow: 1;">Myntra Price: ₹{{ sunscreen.myntra_price }}</span>
+            <a href="{{ sunscreen.myntra_url }}" target="_blank" class="buy-button">Buy Now</a>
+        </p>
+    </div>
+
+            <p class="price">
+                Best Price: ₹{{ sunscreen.best_price }} on {{sunscreen.website}}
+            </p>
+
+            <button class="compare-button" onclick="toggleCompare(this)">Compare Prices</button>
+        </div>
+        {% endfor %}
+    </div>
+    <script src="{{ url_for('static', filename='assets/js/products.js') }}"></script>
+</body>
+</html>
